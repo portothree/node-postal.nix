@@ -6,8 +6,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      packages.${system}.node-postal = import ./default.nix {
-        inherit system;
+      packages.${system}.default = import ./override.nix {
         inherit pkgs;
       };
       devShells.${system}.default = import ./shell.nix { inherit pkgs; };
