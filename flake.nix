@@ -5,5 +5,11 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-    in { devShells.${system}.default = import ./shell.nix { inherit pkgs; }; };
+    in {
+      packages.${system}.node-postal = import ./default.nix {
+        inherit system;
+        inherit pkgs;
+      };
+      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
+    };
 }
